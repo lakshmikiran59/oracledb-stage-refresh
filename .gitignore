@@ -1,0 +1,13 @@
+# Logs
+*.log
+*.tmp
+*.out
+*.err
+
+# Oracle dump files
+*.dmp
+*.par
+
+# OS
+Thumbs.db
+desktop.ini

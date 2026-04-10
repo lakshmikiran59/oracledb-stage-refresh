@@ -1,0 +1,82 @@
+{
+  "_comment": "Oracle Stage Refresh - Export Configuration. Update credentials and paths before running.",
+
+  "OracleHome": "E:\\Oracle19CHome",
+  "ExportBaseDirectory": "E:\\Datapump",
+  "OracleDirectoryObject": "ORCL_DATAPUMP",
+  "LogDirectory": "E:\\Datapump\\Logs",
+  "RunLabel": "AFIQARefresh",
+
+  "Schemas": [
+    {
+      "Name": "ASHLEY",
+      "Credential": "/ as sysdba",
+      "TNSAlias": "",
+      "ExcludeTables": []
+    },
+    {
+      "Name": "CIM",
+      "Credential": "/ as sysdba",
+      "TNSAlias": "",
+      "ExcludeTables": []
+    },
+    {
+      "Name": "DIS",
+      "Credential": "/ as sysdba",
+      "TNSAlias": "dispatch",
+      "ExcludeTables": [
+        "PACOS_LOCATIONHISTORY",
+        "TTSUSERS",
+        "DISTRIBUTION_LIST",
+        "TTSMAPPINGS",
+        "TTSMODULES"
+      ]
+    },
+    {
+      "Name": "EMANIFEST",
+      "Credential": "/ as sysdba",
+      "TNSAlias": "",
+      "ExcludeTables": []
+    },
+    {
+      "Name": "FINANCE",
+      "Credential": "/ as sysdba",
+      "TNSAlias": "",
+      "ExcludeTables": []
+    },
+    {
+      "Name": "LEAN",
+      "Credential": "/ as sysdba",
+      "TNSAlias": "",
+      "ExcludeTables": []
+    },
+    {
+      "Name": "SQLORACLE",
+      "Credential": "/ as sysdba",
+      "TNSAlias": "",
+      "ExcludeTables": []
+    },
+    {
+      "Name": "TAPLSQL",
+      "Credential": "/ as sysdba",
+      "TNSAlias": "",
+      "ExcludeTables": []
+    }
+  ],
+
+  "Email": {
+    "SMTPServer": "smtp.ashleyfurniture.com",
+    "SMTPPort": 25,
+    "UseSSL": false,
+    "From": "dba-noreply@ashleyfurnitureindia.com",
+    "DBARecipients": [
+      "LVennapusa@ashleyfurnitureindia.com",
+      "ravavilla@Ashleyfurniture.com"
+    ],
+    "BusinessRecipients": [
+      "ravavilla@Ashleyfurniture.com",
+      "ravavilla@Ashleyfurnitureindia.com",
+      "ravavilla@ashleyfurniture.com"
+    ]
+  }
+}

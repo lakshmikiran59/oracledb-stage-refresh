@@ -1,0 +1,89 @@
+{
+  "_comment": "Oracle Stage Refresh - Import Configuration. Runs on Stage server (aazeud-oracle03).",
+
+  "OracleHome":            "E:\\Oracle19CHome",
+  "ImportBaseDirectory":   "F:\\DataImportFromProd",
+  "OracleDirectoryObject": "ORCL_DATAIMPORT",
+  "LogDirectory":          "F:\\DataImportFromProd\\Logs",
+  "RunLabel":              "AFIQARefresh",
+
+  "Schemas": [
+    {
+      "Name":          "ASHLEY",
+      "Credential":    "/ as sysdba",
+      "ExcludeIndexes": [],
+      "ExcludeTables":  [],
+      "MaskingScript": ""
+    },
+    {
+      "Name":          "CIM",
+      "Credential":    "/ as sysdba",
+      "ExcludeIndexes": [],
+      "ExcludeTables":  [],
+      "MaskingScript": ""
+    },
+    {
+      "Name":          "DIS",
+      "Credential":    "/ as sysdba",
+      "ExcludeIndexes": [ "IDX_PACOS_HOSAVAILPAST" ],
+      "ExcludeTables": [
+        "PACOS_LOCATIONHISTORY",
+        "TTSUSERS",
+        "DISTRIBUTION_LIST",
+        "TTSMAPPINGS",
+        "TTSMODULES"
+      ],
+      "MaskingScript": ""
+    },
+    {
+      "Name":          "EMANIFEST",
+      "Credential":    "/ as sysdba",
+      "ExcludeIndexes": [],
+      "ExcludeTables":  [],
+      "MaskingScript": ""
+    },
+    {
+      "Name":          "FINANCE",
+      "Credential":    "/ as sysdba",
+      "ExcludeIndexes": [],
+      "ExcludeTables":  [],
+      "MaskingScript": ""
+    },
+    {
+      "Name":          "LEAN",
+      "Credential":    "/ as sysdba",
+      "ExcludeIndexes": [],
+      "ExcludeTables":  [],
+      "MaskingScript": ""
+    },
+    {
+      "Name":          "SQLORACLE",
+      "Credential":    "/ as sysdba",
+      "ExcludeIndexes": [],
+      "ExcludeTables":  [],
+      "MaskingScript": ""
+    },
+    {
+      "Name":          "TAPLSQL",
+      "Credential":    "/ as sysdba",
+      "ExcludeIndexes": [],
+      "ExcludeTables":  [],
+      "MaskingScript": ""
+    }
+  ],
+
+  "Email": {
+    "SMTPServer":         "smtp.ashleyfurniture.com",
+    "SMTPPort":           25,
+    "UseSSL":             false,
+    "From":               "dba-noreply@ashleyfurnitureindia.com",
+    "DBARecipients": [
+      "LVennapusa@ashleyfurnitureindia.com",
+      "ravavilla@Ashleyfurniture.com"
+    ],
+    "BusinessRecipients": [
+      "ravavilla@Ashleyfurniture.com",
+      "ravavilla@ashleyfurniture.com"
+    ]
+  }
+}
