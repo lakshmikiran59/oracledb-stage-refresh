@@ -61,6 +61,12 @@
       "Credential": "/ as sysdba",
       "TNSAlias": "",
       "ExcludeTables": []
+    },
+    {
+      "Name": "PACOS",
+      "Credential": "/ as sysdba",
+      "TNSAlias": "",
+      "ExcludeTables": []
     }
   ],
 

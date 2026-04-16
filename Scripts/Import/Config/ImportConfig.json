@@ -69,6 +69,13 @@
       "ExcludeIndexes": [],
       "ExcludeTables":  [],
       "MaskingScript": ""
+    },
+    {
+      "Name":          "PACOS",
+      "Credential":    "/ as sysdba",
+      "ExcludeIndexes": [],
+      "ExcludeTables":  [],
+      "MaskingScript": ""
     }
   ],
 
