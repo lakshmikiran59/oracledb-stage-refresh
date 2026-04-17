@@ -83,16 +83,6 @@
       "ExcludeIndexes": [],
       "ExcludeTables":  [],
       "MaskingScript": ""
-    },
-    {
-      "Name":          "DB2ORACLE",
-      "Credential":    "/ as sysdba",
-      "ExcludeIndexes": [],
-      "ExcludeTables": [
-        "TBL_PARS_AUDIT_INFORMATION",
-        "TBL_TRIP_TYPE_CODES"
-      ],
-      "MaskingScript": ""
     }
   ],
 
