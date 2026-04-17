@@ -606,7 +606,7 @@ try {
         }
     }
     else {
-        Write-Log "Snapshot script not found at $snapshotScript — skipping." -Level WARN -Phase 'SNAPSHOT'
+        Write-Log "Snapshot script not found at $snapshotScript - skipping." -Level WARN -Phase 'SNAPSHOT'
     }
 }
 catch {

@@ -419,7 +419,7 @@ try {
         }
     }
     else {
-        Write-Log "[SNAPSHOT] TablespaceSnapshot.json not found at $snapshotSrc — skipping." -Level WARN -Phase 'SNAPSHOT'
+        Write-Log "[SNAPSHOT] TablespaceSnapshot.json not found at $snapshotSrc - skipping." -Level WARN -Phase 'SNAPSHOT'
     }
 
     $summaryAtt = @(); if ($Script:LogFile -and (Test-Path $Script:LogFile)) { $summaryAtt += $Script:LogFile }

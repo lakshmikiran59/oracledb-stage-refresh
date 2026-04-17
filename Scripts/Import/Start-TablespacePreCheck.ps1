@@ -367,7 +367,7 @@ tr.insufficient{background:#fdecea;}tr.fixed{background:#eaf4fb;}
         $(if ($sqlHtml) { "<tr class='$cssClass'><td colspan='7'>$sqlHtml</td></tr>" } else { '' })
     }
 
-    $dryNote = if ($DryRun) { "<p><b>DRY RUN — no changes were applied.</b></p>" } else { '' }
+    $dryNote = if ($DryRun) { '<p><b>DRY RUN - no changes were applied.</b></p>' } else { '' }
     $fixNote = if ($Fixed)  { "<p style='color:green;'><b>Remediation SQL was applied automatically.</b></p>" } else { '' }
 
     return @"
@@ -449,7 +449,7 @@ try {
     Write-Log "Results: $okCount OK | $warnCount WARNING | $($insufficientList.Count) INSUFFICIENT"
 
     foreach ($r in $compareResults | Where-Object { $_.Status -ne 'OK' }) {
-        Write-Log "[$($r.Status)] $($r.Name) — $($r.Reason)" -Level $(if ($r.Status -eq 'INSUFFICIENT') { 'ERROR' } else { 'WARN' })
+        Write-Log "[$($r.Status)] $($r.Name) - $($r.Reason)" -Level $(if ($r.Status -eq 'INSUFFICIENT') { 'ERROR' } else { 'WARN' })
     }
 
     # ── Apply remediation if AutoFix and not DryRun ───────────────────────────

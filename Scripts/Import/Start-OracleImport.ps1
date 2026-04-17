@@ -495,7 +495,7 @@ try {
         }
     }
     else {
-        Write-Log "Pre-check script not found at $preCheckScript — skipping (not recommended)." -Level WARN -Phase 'PRECHECK'
+        Write-Log "Pre-check script not found at $preCheckScript - skipping (not recommended)." -Level WARN -Phase 'PRECHECK'
     }
 
     # ══ PHASE 1 — Directory Initialisation ═══════════════════════════════════
