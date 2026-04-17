@@ -29,7 +29,9 @@
         "TTSUSERS",
         "DISTRIBUTION_LIST",
         "TTSMAPPINGS",
-        "TTSMODULES"
+        "TTSMODULES",
+        "TBLEXPORTVALUELIST",
+        "TRIP_VARIANCE"
       ]
     },
     {
@@ -54,7 +56,12 @@
       "Name": "SQLORACLE",
       "Credential": "/ as sysdba",
       "TNSAlias": "",
-      "ExcludeTables": []
+      "ExcludeTables": [
+        "TBLCUSTOMERDELIVERYWINDOW",
+        "TBLLOCATIONDELIVERYMODE",
+        "TBLCARRIER",
+        "TBLPORTMASTER"
+      ]
     },
     {
       "Name": "TAPLSQL",
@@ -67,6 +74,15 @@
       "Credential": "/ as sysdba",
       "TNSAlias": "",
       "ExcludeTables": []
+    },
+    {
+      "Name": "DB2ORACLE",
+      "Credential": "/ as sysdba",
+      "TNSAlias": "",
+      "ExcludeTables": [
+        "TBL_PARS_AUDIT_INFORMATION",
+        "TBL_TRIP_TYPE_CODES"
+      ]
     }
   ],
 
