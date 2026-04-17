@@ -476,6 +476,28 @@ try {
     Write-Log "DryRun    : $($DryRun.IsPresent)"                   -Level INFO -Phase 'STARTUP'
     Write-Log ('=' * 65)                                           -Level INFO -Phase 'STARTUP'
 
+    # ══ PHASE 0 — Tablespace Pre-Check ═══════════════════════════════════════
+    Write-Log ('─' * 60) -Level INFO -Phase 'PRECHECK'
+    Write-Log 'PHASE 0 - Tablespace Pre-Check' -Level INFO -Phase 'PRECHECK'
+    $preCheckScript = Join-Path $PSScriptRoot 'Start-TablespacePreCheck.ps1'
+    if (Test-Path $preCheckScript) {
+        try {
+            # Run pre-check; -AutoFix enables automatic remediation when space is insufficient.
+            # Remove -AutoFix to report-only mode (exits with code 1 if issues found).
+            & $preCheckScript -ConfigPath $ConfigPath -AutoFix
+            if ($LASTEXITCODE -ne 0) {
+                throw "Tablespace Pre-Check reported INSUFFICIENT space and could not auto-fix. Review the pre-check log and resolve before retrying."
+            }
+            Write-Log 'Tablespace Pre-Check passed.' -Level SUCCESS -Phase 'PRECHECK'
+        }
+        catch {
+            throw "Phase 0 (Tablespace Pre-Check) failed: $_"
+        }
+    }
+    else {
+        Write-Log "Pre-check script not found at $preCheckScript — skipping (not recommended)." -Level WARN -Phase 'PRECHECK'
+    }
+
     # ══ PHASE 1 — Directory Initialisation ═══════════════════════════════════
     if ($SkipInit.IsPresent) {
         Write-Log 'Phase 1 skipped (-SkipInit specified).' -Level WARN -Phase 'INIT'

@@ -591,6 +591,23 @@ try {
                      -Attachments $summaryAtt
 
     if ($failCount -gt 0) { exit 1 }
+
+    # ══ PHASE 3 — Tablespace Snapshot ════════════════════════════════════════
+    Write-Log ('─' * 60) -Level INFO -Phase 'SNAPSHOT'
+    Write-Log 'PHASE 3 - Capturing Production tablespace snapshot...' -Level INFO -Phase 'SNAPSHOT'
+    $snapshotScript = Join-Path $PSScriptRoot 'New-TablespaceSnapshot.ps1'
+    if (Test-Path $snapshotScript) {
+        try {
+            & $snapshotScript -ConfigPath $ConfigPath
+            Write-Log 'Tablespace snapshot complete.' -Level SUCCESS -Phase 'SNAPSHOT'
+        }
+        catch {
+            Write-Log "Tablespace snapshot failed (non-fatal): $_" -Level WARN -Phase 'SNAPSHOT'
+        }
+    }
+    else {
+        Write-Log "Snapshot script not found at $snapshotScript — skipping." -Level WARN -Phase 'SNAPSHOT'
+    }
 }
 catch {
     $errMsg = $_.Exception.Message

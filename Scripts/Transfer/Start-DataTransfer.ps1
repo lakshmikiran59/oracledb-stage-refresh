@@ -401,6 +401,27 @@ try {
     Write-Log "Transfer pipeline finished. Success=$successCount | Failed=$failCount | Total=${totalSizeMB} MB | ${totalMins} min" `
               -Level SUCCESS -Phase 'SUMMARY'
 
+    # ── Copy TablespaceSnapshot.json to Stage ─────────────────────────────────
+    $snapshotSrc  = Join-Path $sourceDir 'TablespaceSnapshot.json'
+    $snapshotDest = Join-Path $targetDir 'TablespaceSnapshot.json'
+    if (Test-Path $snapshotSrc) {
+        if ($DryRun.IsPresent) {
+            Write-Log "[SNAPSHOT] DRY RUN - would copy: $snapshotSrc -> $snapshotDest" -Level WARN -Phase 'SNAPSHOT'
+        }
+        else {
+            try {
+                Copy-Item -Path $snapshotSrc -Destination $snapshotDest -Force
+                Write-Log "[SNAPSHOT] Copied TablespaceSnapshot.json to $snapshotDest" -Level SUCCESS -Phase 'SNAPSHOT'
+            }
+            catch {
+                Write-Log "[SNAPSHOT] Failed to copy snapshot (non-fatal): $_" -Level WARN -Phase 'SNAPSHOT'
+            }
+        }
+    }
+    else {
+        Write-Log "[SNAPSHOT] TablespaceSnapshot.json not found at $snapshotSrc — skipping." -Level WARN -Phase 'SNAPSHOT'
+    }
+
     $summaryAtt = @(); if ($Script:LogFile -and (Test-Path $Script:LogFile)) { $summaryAtt += $Script:LogFile }
     Send-TransferEmail -Subject "[TRANSFER SUMMARY] $overallStatus - Oracle Stage Refresh $RunTimestamp" `
                        -Body $summaryBody -To $allRecips `
